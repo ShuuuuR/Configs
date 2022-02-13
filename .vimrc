@@ -113,6 +113,7 @@ Plug 'xolox/vim-misc'
 Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'Taverius/vim-colorscheme-manager'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "System Shortcuts:
 "    <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
 "    <BS>  : Delete brackets in pair
@@ -126,8 +127,8 @@ Plug 'Taverius/vim-colorscheme-manager'
 "    let g:AutoPairsShortcutToggle = '<another key>'
 "
 "to .vimrc, if the key is empty string '', then the shortcut will be disabled.
-"
-Plug 'jiangmiao/auto-pairs'
+Plug 'LunarWatcher/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 "Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
 "Autocompletion plugin
@@ -293,3 +294,9 @@ nnoremap <leader>t :stop<CR>
 " netrw toggle
 nmap <leader>f :Explore<CR>
 nmap <leader><q-f> :edit.<CR>
+"Auto-pairs option
+let g:AutoPairsCompleteOnlyOnSpace=1
+
+let g:LanguageClient_serverCommands = {
+    \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
+    \ }

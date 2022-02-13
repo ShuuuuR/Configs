@@ -185,12 +185,19 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ##	status_command exec /home/shu/.config/i3/net_speed.sh
 #}
 # Audio keys
-bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; notify-send Volume +"
-bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; notify-send Volume -"
-bindsym XF86AudioMute exec "pulseaudio-ctl mute; notify-send Volume Mute"
-#bindcode 123 exec "pulseaudio-ctl up; notify-send Volume +"
-#bindcode 122 exec "pulseaudio-ctl down; notify-send Volume -"
-#bindcode 121 exec "pulseaudio-ctl mute; notify-send Volume Mute"
+# https://www.reddit.com/r/archlinux/comments/ly3ycb/whats_a_replacement_for_pulseaudioctl_after/
+# $ pulseaudio-ctl mute -> $ pactl set-sink-mute @DEFAULT_SINK@ toggle
+#$ pulseaudio-ctl up -> $ pactl set-sink-volume @DEFAULT_SINK@ +5%
+#$ pulseaudio-ctl down -> $ pactl set-sink-volume @DEFAULT_SINK@ -5%
+#$ pulseaudio-ctl set 40 -> $ pactl set-sink-volume @DEFAULT_SINK@ 40%
+#$ pulseaudio-ctl mute-input -> $ pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#$ noop - > $ pactl set-source-volume @DEFAULT_SOURCE@ +5%
+#bindsym XF86AudioRaiseVolume exec "pulseaudio-ctl up; notify-send Volume +"
+bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume @DEFAULT_SINK@ +5%"
+#bindsym XF86AudioLowerVolume exec "pulseaudio-ctl down; notify-send Volume -"
+bindsym XF86AudioLowerVolume exec "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+#bindsym XF86AudioMute exec "pulseaudio-ctl mute; notify-send Volume Mute"
+bindsym XF86AudioMute exec "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 bindcode 233 exec "xbacklight -inc 10"
 bindcode 232 exec "xbacklight -dec 10"
 # Putting clients clients on specific workspaces
