@@ -37,8 +37,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec "dmenu-recent-aliases"
-#bindsym $mod+p exec "dmenu_run -fn 'iosevka_bold, 10px'"
+bindsym $mod+p exec rofi -run-list-command ". ~/.bash_aliases" -run-command "/bin/bash -i -c '{cmd}'" -show run -theme dmenu
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -82,6 +81,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+#bindsym $mod+Shift+f focus parent; fullscreen; focus child
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -215,7 +215,7 @@ assign [class="Stardict"] 8
 
 # Autostart
 exec /home/shu/.config/i3/start_clipit.sh;
-exec_always /home/shu/.config/i3/start_stardict.sh;
+#exec_always /home/shu/.config/i3/start_stardict.sh;
 
 # Floatin max/min size
 floating_minimum_size 750 x 500

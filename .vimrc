@@ -20,6 +20,7 @@ map <F2> i#!/usr/bin/env bash<ESC>
 map <F3> o# This file was create on <ESC>:r!date "+\%x"<ESC>kJ
 " More natural split opening:set splitbelow
 set splitright
+set mouse-=a
 "split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -114,6 +115,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'Taverius/vim-colorscheme-manager'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-surround'
 "System Shortcuts:
 "    <CR>  : Insert new indented line after return if cursor in blank brackets or quotes.
 "    <BS>  : Delete brackets in pair
@@ -127,7 +129,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "    let g:AutoPairsShortcutToggle = '<another key>'
 "
 "to .vimrc, if the key is empty string '', then the shortcut will be disabled.
-Plug 'LunarWatcher/auto-pairs'
+"Plug 'LunarWatcher/auto-pairs'
 "Plug 'jiangmiao/auto-pairs'
 "Collection of configurations for built-in LSP client
 Plug 'neovim/nvim-lspconfig'
@@ -300,3 +302,8 @@ let g:AutoPairsCompleteOnlyOnSpace=1
 let g:LanguageClient_serverCommands = {
     \ 'sql': ['sql-language-server', 'up', '--method', 'stdio'],
     \ }
+
+" https://github.com/spf13/spf13-vim/issues/540#issuecomment-78849489
+"
+"set shortmess=at
+set syntax=on
